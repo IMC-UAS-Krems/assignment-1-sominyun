@@ -35,17 +35,13 @@ class User:
 
 
 class FreeUser(User):
-    pass
+    def __init__(self, user_id: str, name: str, age: int):
+        super().__init__(user_id, name, age)
+        self.MAX_SKIPS_PER_HOUR = 6
 
 
 class PremiumUser(User):
-    def __init__(
-            self,
-            user_id: str,
-            name: str,
-            age: int,
-            subscription_start: date,
-    ):
+    def __init__(self, user_id: str, name: str, age: int, subscription_start: date):
         super().__init__(user_id, name, age)
         self.subscription_start = subscription_start
 
@@ -64,12 +60,6 @@ class FamilyAccountUser(User):
 
 
 class FamilyMember(User):
-    def __init__(
-            self,
-            user_id: str,
-            name: str,
-            age: int,
-            parent: FamilyAccountUser,
-    ):
+    def __init__(self, user_id: str, name: str, age: int, parent: FamilyAccountUser, ):
         super().__init__(user_id, name, age)
         self.parent = parent
